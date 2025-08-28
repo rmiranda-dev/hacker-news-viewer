@@ -1,0 +1,6 @@
+@Nextech.Hn.Api_HostAddress = http://localhost:5098
+
+GET {{Nextech.Hn.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
