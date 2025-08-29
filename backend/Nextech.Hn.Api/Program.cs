@@ -61,3 +61,6 @@ static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
             });
 }
 
+// Make Program class accessible for integration testing
+public partial class Program { }
+
