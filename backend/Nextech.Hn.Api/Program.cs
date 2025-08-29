@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Http;
 using Nextech.Hn.Api.Adapters;
 using Nextech.Hn.Api.Config;
+using Nextech.Hn.Api.Services;
 using Polly;
 using Polly.Extensions.Http;
 
@@ -13,6 +14,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add memory cache for StoriesService
+builder.Services.AddMemoryCache(options =>
+{
+    options.SizeLimit = 1000; // Limit cache size to prevent memory issues
+});
+
 // Configure HackerNews options
 builder.Services.Configure<HackerNewsOptions>(
     builder.Configuration.GetSection("HackerNews"));
@@ -23,6 +30,7 @@ builder.Services.AddHttpClient<IHackerNewsClient, HackerNewsClient>()
 
 // Register application services  
 builder.Services.AddScoped<IHackerNewsClient, HackerNewsClient>();
+builder.Services.AddScoped<IStoriesService, StoriesService>();
 
 var app = builder.Build();
 
