@@ -15,8 +15,9 @@ export class StoriesApiService {
     const offset = pageIndex * pageSize;
     let url = `${this.apiBaseUrl}/api/stories/new?offset=${offset}&limit=${pageSize}`;
     
-    if (search) {
-      url += `&search=${encodeURIComponent(search)}`;
+    // Only add search parameter if search term is not empty/undefined/null
+    if (search && search.trim()) {
+      url += `&search=${encodeURIComponent(search.trim())}`;
     }
 
     return this.httpClient.get<PagedStories>(url);

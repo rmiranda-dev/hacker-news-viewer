@@ -109,7 +109,7 @@ export class StoriesStateService {
         return this.storiesApiService.getStories(
           pageIndex,
           pageSize,
-          searchTerm || undefined
+          searchTerm && searchTerm.trim() ? searchTerm.trim() : undefined
         ).pipe(
           catchError((error) => {
             this.errorSubject.next(error.message || 'An error occurred while loading stories');
