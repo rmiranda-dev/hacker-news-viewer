@@ -52,7 +52,7 @@ import { StoryListItemComponent } from './story-list-item.component';
     .stories-grid {
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: 20px;
     }
     
     .story-item {
@@ -112,7 +112,11 @@ import { StoryListItemComponent } from './story-list-item.component';
     
     @media (max-width: 600px) {
       .story-list-container {
-        padding: 12px;
+        padding: 12px 8px;
+      }
+      
+      .stories-grid {
+        gap: 16px;
       }
       
       .empty-content {

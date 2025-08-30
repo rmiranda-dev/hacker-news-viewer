@@ -59,7 +59,7 @@ import { Story } from '../../models/story';
   `,
   styles: [`
     .story-card {
-      margin-bottom: 16px;
+      margin-bottom: 0;
       border-radius: 12px;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -118,6 +118,9 @@ import { Story } from '../../models/story';
       gap: 8px;
       width: 100%;
       justify-content: flex-start;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     
     .story-link:hover {
@@ -145,9 +148,13 @@ import { Story } from '../../models/story';
       color: #424242;
       font-size: 1.1rem;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 8px;
       padding: 8px 0;
+      line-height: 1.5;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     
     .article-icon {
