@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: '' // to be set at deploy
+  apiBaseUrl: 'https://app-hn-sjcdpkxpaunjm.azurewebsites.net'
 };

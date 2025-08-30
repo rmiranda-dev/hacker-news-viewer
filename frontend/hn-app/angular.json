@@ -53,6 +53,24 @@
               ],
               "outputHashing": "all"
             },
+            "spa": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all",
+              "outputMode": "static",
+              "server": false,
+              "ssr": false
+            },
             "development": {
               "optimization": false,
               "extractLicenses": false,

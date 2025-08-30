@@ -1,0 +1,47 @@
+name: Deploy Backend to Azure App Service
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-appservice.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-appservice.yml'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@v4
+
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore backend/Nextech.Hn.Api/Nextech.Hn.Api.csproj
+
+    - name: Build application
+      run: dotnet build backend/Nextech.Hn.Api/Nextech.Hn.Api.csproj --configuration Release --no-restore
+
+    - name: Run tests
+      run: dotnet test backend/Nextech.Hn.sln --configuration Release --no-build --verbosity normal
+
+    - name: Publish application
+      run: dotnet publish backend/Nextech.Hn.Api/Nextech.Hn.Api.csproj --configuration Release --no-build --output backend/publish
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'app-hn-sjcdpkxpaunjm'  # Replace with your actual app name
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: backend/publish
