@@ -43,7 +43,7 @@ jobs:
     - name: Build Angular app for production (SPA)
       run: |
         cd frontend/hn-app
-        npm run build -- --configuration=spa --base-href="/hacker-news-viewer/"
+        npm run build -- --configuration=production --base-href="/hacker-news-viewer/"
 
     - name: Setup Pages
       uses: actions/configure-pages@v4
