@@ -4,8 +4,91 @@ A full-stack web application displaying the newest stories from Hacker News usin
 
 ## Live Demo
 
-- **Frontend:** [https://your-app-name.azurewebsites.net](https://your-app-name.azurewebsites.net)
-- **API:** [https://your-api-name.azurewebsites.net](https://your-api-name.azurewebsites.net)
+🚀 **Production Deployment:**
+
+- **Frontend:** [https://rmiranda-dev.github.io/hacker-news-viewer/](https://rmiranda-dev.github.io/hacker-news-viewer/)
+- **Backend API:** [https://app-hn-sjcdpkxpaunjm.azurewebsites.net](https://app-hn-sjcdpkxpaunjm.azurewebsites.net)
+- **API Test Endpoint:** [https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new?offset=0&limit=20](https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new?offset=0&limit=20)
+
+### 🎯 Try It Now
+
+1. **Visit the Live App**: [https://rmiranda-dev.github.io/hacker-news-viewer/](https://rmiranda-dev.github.io/hacker-news-viewer/)
+2. **Test API Directly**: [https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new?offset=0&limit=20](https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new?offset=0&limit=20)
+3. **Search Stories**: Try searching for "AI", "JavaScript", or "Python"
+4. **Navigate Pages**: Use pagination to browse through hundreds of stories
+
+### API Endpoints
+
+**Base URL:** `https://app-hn-sjcdpkxpaunjm.azurewebsites.net`
+
+#### Get New Stories
+```http
+GET /api/stories/new?offset={offset}&limit={limit}&search={search}
+```
+
+**Parameters:**
+- `offset` (optional): Number of stories to skip (default: 0)
+- `limit` (optional): Number of stories to return (default: 20, max: 100)
+- `search` (optional): Filter stories by title (case-insensitive)
+
+**Example Requests:**
+```bash
+# Get first 20 stories
+curl "https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new"
+
+# Get stories 20-39 (pagination)
+curl "https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new?offset=20&limit=20"
+
+# Search for stories containing "AI"
+curl "https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new?search=AI"
+
+# Get 50 stories with search
+curl "https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new?offset=0&limit=50&search=javascript"
+```
+
+**Or test directly in your browser:**
+- [Get 10 latest stories](https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new?limit=10)
+- [Search for "Python"](https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new?search=Python&limit=10)
+- [Get stories 10-19](https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new?offset=10&limit=10)
+- [Search for "React"](https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new?search=React&limit=5)
+
+**Response Format:**
+```json
+{
+  "items": [
+    {
+      "id": 45071989,
+      "title": "Show HN: SJT- A lightweight structured JSON table format for APIs",
+      "url": "https://github.com/yukiakai/sjt",
+      "by": "yukiakai",
+      "time": 1725032651,
+      "score": 1,
+      "descendants": 0
+    }
+  ],
+  "totalCount": 500,
+  "offset": 0,
+  "limit": 20,
+  "hasMore": true
+}
+```
+
+**Status Codes:**
+- `200 OK`: Success
+- `400 Bad Request`: Invalid parameters (limit > 100, negative offset/limit)
+- `500 Internal Server Error`: Server error
+
+#### Health Check
+```http
+GET /health
+```
+
+**Response:**
+```json
+{
+  "status": "Healthy"
+}
+```
 
 ## Features
 
@@ -83,14 +166,9 @@ A full-stack web application displaying the newest stories from Hacker News usin
 
 **Frontend:**
 
-<<<<<<< HEAD
 - Angular 20 with TypeScript (strict mode)
 - Standalone components architecture
 - RxJS for reactive state management
-=======
-- Angular 20 with TypeScript
-- RxJS for reactive programming
->>>>>>> 7f17521658040fe7621bdb0f550efce0bf6a52f3
 - Angular Material UI components
 - Server-Side Rendering (SSR) support
 - CSS animations and modern styling
@@ -105,6 +183,13 @@ A full-stack web application displaying the newest stories from Hacker News usin
 - CORS support for cross-origin requests
 - Comprehensive error handling and logging
 - xUnit testing framework with FluentAssertions
+
+**Production Deployment:**
+
+- **Frontend Hosting:** GitHub Pages (FREE)
+- **Backend Hosting:** Azure App Service F1 (FREE tier)
+- **CI/CD:** GitHub Actions for automated deployment
+- **Total Cost:** $0.00 (completely free deployment)
 
 **Development Tools:**
 
@@ -287,6 +372,84 @@ Retrieve specific story by ID
 ```
 
 **Swagger Documentation:** Available at `/swagger` endpoint
+
+## Production Deployment
+
+### Architecture Overview
+
+The application is deployed using a **completely FREE** cloud infrastructure:
+
+- **Frontend**: Deployed to GitHub Pages (FREE) via GitHub Actions
+- **Backend**: Deployed to Azure App Service F1 Free tier (FREE) via GitHub Actions
+- **Total Monthly Cost**: $0.00
+
+### Deployment URLs
+
+| Service | URL | Purpose |
+|---------|-----|---------|
+| **Live Application** | [https://rmiranda-dev.github.io/hacker-news-viewer/](https://rmiranda-dev.github.io/hacker-news-viewer/) | Production frontend |
+| **API Backend** | [https://app-hn-sjcdpkxpaunjm.azurewebsites.net](https://app-hn-sjcdpkxpaunjm.azurewebsites.net) | Production API |
+| **API Test Endpoint** | [https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new?offset=0&limit=20](https://app-hn-sjcdpkxpaunjm.azurewebsites.net/api/stories/new?offset=0&limit=20) | Live API test |
+
+### CI/CD Pipeline
+
+**Frontend Deployment (GitHub Pages):**
+```yaml
+# .github/workflows/frontend-github-pages.yml
+name: Deploy Frontend to GitHub Pages
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'frontend/**' ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Angular app for production
+        run: npm run build -- --configuration=production
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+```
+
+**Backend Deployment (Azure App Service):**
+```yaml
+# .github/workflows/backend-appservice.yml
+name: Deploy Backend to Azure App Service
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'backend/**' ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build .NET application
+        run: dotnet publish --configuration Release
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v2
+```
+
+### Environment Configuration
+
+**Production Frontend Environment:**
+```typescript
+// src/environments/environment.prod.ts
+export const environment = {
+  production: true,
+  apiBaseUrl: 'https://app-hn-sjcdpkxpaunjm.azurewebsites.net'
+};
+```
+
+**Azure App Service Configuration:**
+- **Runtime**: .NET 8.0
+- **OS**: Linux
+- **Pricing Tier**: F1 (Free)
+- **Region**: West US 2
+- **Always On**: Disabled (Free tier limitation)
 
 ## Project Structure
 
