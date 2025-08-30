@@ -9,29 +9,39 @@ A full-stack web application displaying the newest stories from Hacker News usin
 
 ## Features
 
-### Frontend (Angular)
+### Frontend (Angular 20)
 
-- Story list with newest Hacker News stories
-- Smart link handling for stories with/without URLs
-- Real-time search across story titles
-- Pagination for large datasets
-- Responsive design
-- Loading states and error handling
+- **Modern Material Design UI** with enhanced styling and animations
+- **Real-time search** with debounced input and instant filtering
+- **Responsive design** optimized for desktop and mobile devices
+- **Staggering animations** for smooth story list transitions
+- **Pagination** with customizable page sizes (10, 20, 50, 100 items)
+- **State management** using RxJS observables and reactive patterns
+- **Error handling** with user-friendly error messages
+- **Loading states** with Material Design progress indicators
+- **Clean search experience** with proper placeholder behavior
+- **Accessibility** features following WCAG guidelines
 
 ### Backend (ASP.NET Core)
 
-- RESTful API endpoints
-- Dependency injection configuration
-- Intelligent caching of Hacker News data
-- Comprehensive exception handling
-- Structured logging
-- Swagger/OpenAPI documentation
+- **RESTful API** with comprehensive Swagger/OpenAPI documentation
+- **CORS support** for cross-origin requests from Angular frontend
+- **Memory caching** with configurable TTL for optimal performance
+- **Retry policies** using Polly for resilient HTTP operations
+- **Comprehensive validation** with detailed error responses
+- **Structured logging** throughout the application
+- **Dependency injection** with clean architecture patterns
+- **Exception handling** with consistent ProblemDetails responses
+- **Search functionality** with case-insensitive title filtering
+- **Pagination** with offset/limit parameters and total count
 
-### Testing
+### Testing & Quality
 
-- Unit tests with high coverage
-- Integration tests for API endpoints
-- Angular component and service tests
+- **Frontend**: 24 comprehensive tests covering components and services
+- **Backend**: 50 unit and integration tests with high coverage
+- **Animation testing** with proper provider configuration
+- **Error scenario testing** for robust error handling
+- **API integration testing** for end-to-end functionality
 
 ## Architecture
 
@@ -73,24 +83,39 @@ A full-stack web application displaying the newest stories from Hacker News usin
 
 **Frontend:**
 
-- Angular 17+ with TypeScript
-- RxJS for reactive programming
+- Angular 20 with TypeScript (strict mode)
+- Standalone components architecture
+- RxJS for reactive state management
 - Angular Material UI components
-- Jasmine/Karma testing
+- Server-Side Rendering (SSR) support
+- CSS animations and modern styling
+- Jasmine/Karma testing framework
 
 **Backend:**
 
 - ASP.NET Core 8.0 with C# 12
-- Entity Framework Core
-- AutoMapper for object mapping
-- Serilog structured logging
-- xUnit and Moq for testing
+- RESTful API with Swagger/OpenAPI documentation
+- HttpClient with Polly retry policies
+- Memory caching with configurable TTL
+- CORS support for cross-origin requests
+- Comprehensive error handling and logging
+- xUnit testing framework with FluentAssertions
 
-**Infrastructure:**
+**Development Tools:**
 
-- Azure App Service hosting
-- Azure Application Insights monitoring
-- GitHub Actions CI/CD
+- TypeScript with strict compilation
+- ESLint for code quality
+- Angular CLI for project scaffolding
+- Hot Module Replacement (HMR) for development
+- GitHub for version control
+
+**Architecture Patterns:**
+
+- Clean architecture with separation of concerns
+- Dependency injection throughout the application
+- Reactive programming with observables
+- Component-based UI architecture
+- Repository pattern for data access
 
 ## Getting Started
 
@@ -106,14 +131,14 @@ A full-stack web application displaying the newest stories from Hacker News usin
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/hacker-news-viewer.git
+git clone https://github.com/rmiranda-dev/hacker-news-viewer.git
 cd hacker-news-viewer
 ```
 
 2. **Backend setup**
 
 ```bash
-cd backend/HackerNewsViewer.Api
+cd backend/Nextech.Hn.Api
 dotnet restore
 dotnet build
 ```
@@ -121,7 +146,7 @@ dotnet build
 3. **Frontend setup**
 
 ```bash
-cd frontend/hacker-news-viewer
+cd frontend/hn-app
 npm install
 ```
 
@@ -130,16 +155,16 @@ npm install
 **Start the backend API:**
 
 ```bash
-cd backend/HackerNewsViewer.Api
+cd backend/Nextech.Hn.Api
 dotnet run
 ```
 
-API available at: `https://localhost:5001`
+API available at: `http://localhost:5098`
 
 **Start the frontend:**
 
 ```bash
-cd frontend/hacker-news-viewer
+cd frontend/hn-app
 ng serve
 ```
 
@@ -150,14 +175,14 @@ Application available at: `http://localhost:4200`
 **Backend:**
 
 ```bash
-cd backend/HackerNewsViewer.Api
+cd backend/Nextech.Hn.Api
 dotnet publish -c Release -o publish
 ```
 
 **Frontend:**
 
 ```bash
-cd frontend/hacker-news-viewer
+cd frontend/hn-app
 ng build --configuration production
 ```
 
@@ -175,9 +200,9 @@ dotnet test --logger "console;verbosity=detailed"
 **Frontend tests:**
 
 ```bash
-cd frontend/hacker-news-viewer
+cd frontend/hn-app
 npm run test
-npm run e2e
+ng test --watch=false
 ```
 
 ### Test Coverage
@@ -192,8 +217,8 @@ dotnet test --collect:"XPlat Code Coverage"
 **Frontend coverage:**
 
 ```bash
-cd frontend/hacker-news-viewer
-ng test --code-coverage
+cd frontend/hn-app
+ng test --code-coverage --watch=false
 ```
 
 ## API Documentation
