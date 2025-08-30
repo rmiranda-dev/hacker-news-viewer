@@ -83,9 +83,14 @@ A full-stack web application displaying the newest stories from Hacker News usin
 
 **Frontend:**
 
+<<<<<<< HEAD
 - Angular 20 with TypeScript (strict mode)
 - Standalone components architecture
 - RxJS for reactive state management
+=======
+- Angular 20 with TypeScript
+- RxJS for reactive programming
+>>>>>>> 7f17521658040fe7621bdb0f550efce0bf6a52f3
 - Angular Material UI components
 - Server-Side Rendering (SSR) support
 - CSS animations and modern styling
