@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { API_BASE_URL } from './tokens/api-base-url.token';
 import { AppComponent } from './app.component';
 
@@ -11,6 +12,7 @@ describe('AppComponent', () => {
       providers: [
         provideHttpClient(),
         provideHttpClientTesting(),
+        provideNoopAnimations(),
         { provide: API_BASE_URL, useValue: 'http://localhost:5000' }
       ]
     }).compileComponents();
