@@ -73,7 +73,7 @@ A full-stack web application displaying the newest stories from Hacker News usin
 
 **Frontend:**
 
-- Angular 17+ with TypeScript
+- Angular 20 with TypeScript
 - RxJS for reactive programming
 - Angular Material UI components
 - Jasmine/Karma testing
