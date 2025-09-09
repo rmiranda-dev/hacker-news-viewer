@@ -1,0 +1,24 @@
+<div class="story-list-container">
+  <ng-container *ngIf="stories && stories.length > 0; else emptyState">
+    <div class="stories-grid">
+      <app-story-list-item 
+        *ngFor="let story of stories; trackBy: trackByStoryId; let i = index"
+        [story]="story"
+        class="story-item"
+        [style.animation-delay]="(i * 150) + 'ms'">
+      </app-story-list-item>
+    </div>
+  </ng-container>
+  
+  <ng-template #emptyState>
+    <mat-card [@fadeIn] class="empty-state">
+      <mat-card-content>
+        <div class="empty-content">
+          <mat-icon class="empty-icon">article</mat-icon>
+          <h3>No stories found</h3>
+          <p>Try adjusting your search terms or browse different pages.</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </ng-template>
+</div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { StoriesPageComponent } from './features/stories/stories-page.component';
+import { StoriesPageComponent } from './features/stories';
 
 @Component({
   selector: 'app-root',

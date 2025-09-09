@@ -1,0 +1,50 @@
+<div class="stories-page">
+  <!-- Header -->
+  <mat-toolbar color="primary" class="header-toolbar">
+    <mat-icon class="header-icon">article</mat-icon>
+    <h1 class="header-title">Hacker News Viewer</h1>
+  </mat-toolbar>
+
+  <div class="content-container">
+    <!-- Search Box -->
+    <app-search-box (searchChange)="onSearch($event)"></app-search-box>
+
+    <!-- Loading Spinner -->
+    <div class="loading-container" *ngIf="loading$ | async">
+      <mat-progress-spinner 
+        mode="indeterminate" 
+        diameter="50">
+      </mat-progress-spinner>
+      <p class="loading-text">Loading stories...</p>
+    </div>
+
+    <!-- Error State -->
+    <mat-card class="error-card" *ngIf="error$ | async as errorMessage">
+      <mat-card-content>
+        <div class="error-content">
+          <mat-icon class="error-icon" color="warn">error</mat-icon>
+          <h3>Something went wrong</h3>
+          <p>{{ errorMessage }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Story List -->
+    <app-story-list 
+      *ngIf="(loading$ | async) === false && (error$ | async) === null"
+      [stories]="stories$ | async">
+    </app-story-list>
+
+    <!-- Pagination -->
+    <div class="pagination-container" *ngIf="(total$ | async) && (total$ | async)! > 0">
+      <mat-paginator
+        [length]="total$ | async"
+        [pageSize]="pageSize$ | async"
+        [pageIndex]="pageIndex$ | async"
+        [pageSizeOptions]="[10, 20, 50, 100]"
+        (page)="onPageChange($event)"
+        showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>
+</div>

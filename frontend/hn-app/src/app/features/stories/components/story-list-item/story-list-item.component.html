@@ -1,0 +1,40 @@
+<mat-card class="story-card">
+  <mat-card-content>
+    <div class="story-header">
+      <div class="story-title">
+        <a 
+          *ngIf="story.url; else noLinkTemplate"
+          mat-button
+          [href]="story.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="story-link">
+          <mat-icon class="external-link-icon">open_in_new</mat-icon>
+          {{ story.title || 'Untitled' }}
+        </a>
+        <ng-template #noLinkTemplate>
+          <span class="no-link">
+            <mat-icon class="article-icon">article</mat-icon>
+            {{ story.title || 'Untitled' }}
+          </span>
+        </ng-template>
+      </div>
+    </div>
+    
+    <div class="story-meta">
+      <div class="meta-item" *ngIf="story.by">
+        <mat-icon class="meta-icon">person</mat-icon>
+        <span class="author">{{ story.by }}</span>
+      </div>
+      <div class="meta-separator" *ngIf="story.by && story.time">•</div>
+      <div class="meta-item" *ngIf="story.time">
+        <mat-icon class="meta-icon">schedule</mat-icon>
+        <span class="time">{{ story.time * 1000 | date:'medium' }}</span>
+      </div>
+      <div class="story-id">
+        <mat-icon class="meta-icon">tag</mat-icon>
+        <span>#{{ story.id }}</span>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

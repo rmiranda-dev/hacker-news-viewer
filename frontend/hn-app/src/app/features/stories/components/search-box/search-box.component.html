@@ -1,0 +1,21 @@
+<div class="search-container" [@slideIn]>
+  <mat-form-field appearance="fill" class="search-field" hideRequiredMarker>
+    <input 
+      matInput
+      [formControl]="searchControl"
+      placeholder="Search Hacker News stories..."
+      type="text"
+      class="search-input">
+    <mat-icon matPrefix class="search-icon">search</mat-icon>
+    <button 
+      *ngIf="searchControl.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear search"
+      (click)="clearSearch()"
+      type="button"
+      class="clear-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
