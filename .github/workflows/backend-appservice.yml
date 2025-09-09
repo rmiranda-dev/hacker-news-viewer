@@ -27,10 +27,10 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore backend/Nextech.Hn.Api/Nextech.Hn.Api.csproj
+      run: dotnet restore backend/Nextech.Hn.sln
 
     - name: Build application
-      run: dotnet build backend/Nextech.Hn.Api/Nextech.Hn.Api.csproj --configuration Release --no-restore
+      run: dotnet build backend/Nextech.Hn.sln --configuration Release --no-restore
 
     - name: Run tests
       run: dotnet test backend/Nextech.Hn.sln --configuration Release --no-build --verbosity normal
